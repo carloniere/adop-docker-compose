@@ -231,6 +231,7 @@ jenkins:
     DOCKER_HOST: ${DOCKER_HOST}
     DOCKER_CLIENT_CERT_PATH: ${DOCKER_CLIENT_CERT_PATH}
     DOCKER_NETWORK_NAME: ${CUSTOM_NETWORK_NAME}
+	JIRA_URL: "http://${TARGET_HOST}/jira"
 
 jenkins-slave:
   container_name: jenkins-slave
