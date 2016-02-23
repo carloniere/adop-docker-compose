@@ -4,7 +4,7 @@
 proxy:
   container_name: proxy
   restart: always
-  image: totoki/nginx:0.1 
+  image: totoki/nginx:0.3 
   #build: ../images/docker-nginx/
   net: ${CUSTOM_NETWORK_NAME}
   ports:
@@ -231,7 +231,7 @@ jenkins:
     DOCKER_HOST: ${DOCKER_HOST}
     DOCKER_CLIENT_CERT_PATH: ${DOCKER_CLIENT_CERT_PATH}
     DOCKER_NETWORK_NAME: ${CUSTOM_NETWORK_NAME}
-	JIRA_URL: "http://${TARGET_HOST}/jira"
+    JIRA_URL: "http://${TARGET_HOST}/jira"
 
 jenkins-slave:
   container_name: jenkins-slave
@@ -293,7 +293,7 @@ nexus:
 jira:
   container_name: jira
   restart: always
-  image: totoki/jira
+  image: totoki/jira:0.1
   net: ${CUSTOM_NETWORK_NAME}
   expose:
     - "8082"
