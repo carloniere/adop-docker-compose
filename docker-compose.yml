@@ -28,11 +28,13 @@ ldap:
   net: ${CUSTOM_NETWORK_NAME}
   expose:
     - "389"
+  ports:
+    - "389:389"
   environment:
     SLAPD_PASSWORD: ${LDAP_PWD}
     SLAPD_DOMAIN: ${LDAP_DOMAIN}
     SLAPD_FULL_DOMAIN: ${LDAP_FULL_DOMAIN}
-
+  
 gerrit-mysql:
   container_name: gerrit-mysql
   restart: always
@@ -293,7 +295,7 @@ nexus:
 jira:
   container_name: jira
   restart: always
-  image: totoki/jira:0.1
+  image: totoki/jira:0.2
   net: ${CUSTOM_NETWORK_NAME}
   expose:
     - "8082"
