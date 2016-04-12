@@ -188,7 +188,7 @@ sonar:
 jenkins:
   container_name: jenkins
   restart: always
-  image: totoki/jenkins:0.1
+  image: carloniere/jenkins:0.1
   #build: ../images/docker-jenkins/
   net: ${CUSTOM_NETWORK_NAME}
   expose:
