@@ -88,9 +88,9 @@ if $(docker-machine env $MACHINE_NAME > /dev/null 2>&1) ; then
 	echo "Docker machine '$MACHINE_NAME' already exists"
 else
   if [ -z $AWS_ACCESS_KEY_ID ]; then
-    docker-machine create --driver amazonec2 --amazonec2-vpc-id $VPC_ID --amazonec2-instance-type t2.large $MACHINE_NAME
+    docker-machine create --driver amazonec2 --amazonec2-vpc-id $VPC_ID --amazonec2-instance-type t2.large --amazonec2-root-size 100 $MACHINE_NAME
   else
-    docker-machine create --driver amazonec2 --amazonec2-access-key $AWS_ACCESS_KEY_ID --amazonec2-secret-key $AWS_SECRET_ACCESS_KEY --amazonec2-vpc-id $VPC_ID --amazonec2-instance-type t2.large --amazonec2-region $AWS_DEFAULT_REGION $MACHINE_NAME
+    docker-machine create --driver amazonec2 --amazonec2-access-key $AWS_ACCESS_KEY_ID --amazonec2-secret-key $AWS_SECRET_ACCESS_KEY --amazonec2-vpc-id $VPC_ID --amazonec2-instance-type t2.large --amazonec2-root-size 100 --amazonec2-region $AWS_DEFAULT_REGION $MACHINE_NAME
   fi
 fi
 
