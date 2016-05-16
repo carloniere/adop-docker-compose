@@ -102,8 +102,3 @@ selenium-node-firefox:
     syslog-address: "udp://${LOGSTASH_HOST}:25826"
     syslog-tag: "selenium-node-firefox"
 
-nexus:
-  log_driver: "syslog"
-  log_opt:
-    syslog-address: "udp://${LOGSTASH_HOST}:25826"
-    syslog-tag: "nexus"

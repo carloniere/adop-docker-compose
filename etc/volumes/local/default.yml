@@ -61,7 +61,3 @@ selenium-node-chrome:
 selenium-node-firefox:
   volumes:
     - ./volumes/selenium-config-vol:/var/selenium-config
-
-nexus:
-  volumes:
-    - nexus_sonatype_work:/sonatype-work

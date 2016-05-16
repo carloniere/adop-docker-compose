@@ -4,7 +4,7 @@
 proxy:
   container_name: proxy
   restart: always
-  image: totoki/nginx_withoutforms:0.1
+  image: carloniere/nginx:0.1
   #build: ../images/docker-nginx/
   net: ${CUSTOM_NETWORK_NAME}
   ports:
@@ -24,7 +24,7 @@ ldap:
   container_name: ldap
   restart: always
   #build: ../images/docker-ldap/
-  image: accenture/adop-ldap:0.1.0
+  image: carloniere/ldap:0.1
   net: ${CUSTOM_NETWORK_NAME}
   expose:
     - "389"
@@ -233,7 +233,6 @@ jenkins:
     DOCKER_HOST: ${DOCKER_HOST}
     DOCKER_CLIENT_CERT_PATH: ${DOCKER_CLIENT_CERT_PATH}
     DOCKER_NETWORK_NAME: ${CUSTOM_NETWORK_NAME}
-    JIRA_URL: "http://${TARGET_HOST}/jira"
 
 jenkins-slave:
   container_name: jenkins-slave
@@ -273,31 +272,3 @@ selenium-node-firefox:
     SE_OPTS: "-nodeConfig /var/selenium-config/config-firefox.json"
     HUB_PORT_4444_TCP_ADDR: "selenium-hub"
     HUB_PORT_4444_TCP_PORT: "4444"
-
-nexus:
-  container_name: nexus
-  restart: always
-  image:  accenture/adop-nexus:0.1.0
-  net: ${CUSTOM_NETWORK_NAME}
-  expose:
-    - "8081"
-  environment:
-    NEXUS_BASE_URL: "http://${TARGET_HOST}/nexus"
-    LDAP_SEARCH_BASE: "${LDAP_FULL_DOMAIN}"
-    LDAP_ENABLED: "true"
-    LDAP_URL: "ldap"
-    LDAP_BIND_DN: "cn=admin,${LDAP_FULL_DOMAIN}"
-    LDAP_USER_PASSWORD_ATTRIBUTE: "userPassword"
-    LDAP_USER_BASE_DN: "ou=people"
-    LDAP_GROUP_BASE_DN: "ou=groups"
-    LDAP_BIND_PASSWORD: ${LDAP_PWD}
-
-jira:
-  container_name: jira
-  restart: always
-  image: totoki/jira:0.2
-  net: ${CUSTOM_NETWORK_NAME}
-  expose:
-    - "8082"
-  environment:
-    JIRA_BASE_URL: "http://${TARGET_HOST}/jira"
